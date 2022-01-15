@@ -53,6 +53,26 @@ router.get("/onecountry", function (req, res) {
   });
 });
 
+/* Countries starting with an M */
 
+router.get("/startWithM", function (req, res) {
+    var params = {
+        TableName: "Countries",
+        FilterExpression: "#n between :start_letter and :end_letter",
+        ExpressionAttributeNames: {
+            "#n": "nom",
+        },
+        ExpressionAttributeValues: {
+            ":start_letter":"M",
+            ":end_letter":"N",
+        },
+    };
+    docClient.scan(params, function (err, data) {
+        console.log(data.Items);
+        res.render("startWithM", {
+            "country": data.Items,
+        });
+    });
+});
 module.exports = router;
 

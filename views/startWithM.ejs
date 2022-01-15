@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pays commençant par la lettre M</title>
+  </head>
+  <body>
+    <h1>Pays commençant par la lettre M</h1>
+    <ul>
+      <%
+        var list = '';
+        for(i = 0; i < country.length; i++) {
+            list += '<li>' + country[i].nom + '</li>'
+        }
+      %>
+      <%- list %>
+      
+    </ul>
+  </body>
+</html>
