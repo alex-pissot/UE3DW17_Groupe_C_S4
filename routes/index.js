@@ -16,38 +16,39 @@ router.get('/', function(req, res, next) {
 });
 
 /* Pays Euro */
-// router.get('/payseuro', function(req, res) {
-//   var params = {
-//     TableName : "Countries",
-//     ProjectionExpression: "nom",
-//     ExpressionAttributeValues: {
-//         ":region": "Europe"
-//     }
-//   };
-//   docClient.query(params, function(err, data) {
-//     res.render('payseuro', {
-//       "payseuro" : data.Items
-//     });
-//   });
-// });
-
+/*
+router.get('/payseuro', function(req, res) {
+  var params = {
+    TableName : "Countries",
+    ProjectionExpression: "nom",
+    ExpressionAttributeValues: {
+         ":region": "Europe"
+    }
+  };
+  docClient.query(params, function(err, data) {
+  res.render('payseuro', {
+    "payseuro" : data.Items[0]
+    });
+  });
+});
+*/
 /* Info one country */
 
 router.get("/onecountry", function (req, res) {
   var params = {
-      TableName: "Countries",
-      FilterExpression: "#n = :nom",
-      ExpressionAttributeNames: {
-          "#n": "nom",
-      },
-      ExpressionAttributeValues: {
-          ":nom": "France",
-      },
+    TableName : "Countries",
+    FilterExpression: "#nm = :nom",
+    ExpressionAttributeNames:{
+        "#nm": "nom"
+    },
+    ExpressionAttributeValues: {
+        ":nom": "France"
+    }
   };
   docClient.scan(params, function (err, data) {
       console.log(data.Items);
       res.render("onecountry", {
-          country: data.Items[0],
+          "country": data.Items[0],
       });
   });
 });
