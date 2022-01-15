@@ -11,22 +11,25 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 console.log("Importing countries into DynamoDB. Please wait.");
 
 var allCountries = JSON.parse(fs.readFileSync('countries.json', 'utf8'));
-allCountries.forEach(function(countrie) {
+allCountries.forEach(function(country) {
     var params = {
         TableName: "Countries",
         Item: {
-            "region":  countrie.region,
-            "nom": countrie.name.common,
-            "langues":  countrie.languages,
-            "superficie":  countrie.area
+
+            "region":  country.region,
+            "nom": country.name.common,
+            "capital":  country.capital,
+            "langues":  country.languages,
+            "superficie":  country.area
+            
         }
     };
 
     docClient.put(params, function(err, data) {
        if (err) {
-           console.error("Unable to add country", countrie.name.common, ". Error JSON:", JSON.stringify(err, null, 2));
+           console.error("Unable to add country", country.name.common, ". Error JSON:", JSON.stringify(err, null, 2));
        } else {
-           console.log("PutItem succeeded:", countrie.name.common);
+           console.log("PutItem succeeded:", country.name.common);
        }
     });
 });
