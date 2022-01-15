@@ -12,7 +12,7 @@ AWS.config.update({
 var docClient = new AWS.DynamoDB.DocumentClient();
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'UE 3DW16' });
 });
 
 /* Pays Euro */
