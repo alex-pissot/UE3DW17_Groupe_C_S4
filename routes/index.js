@@ -16,22 +16,24 @@ router.get('/', function(req, res, next) {
 });
 
 /* Pays Euro */
-/*
-router.get('/payseuro', function(req, res) {
-  var params = {
-    TableName : "Countries",
-    ProjectionExpression: "nom",
-    ExpressionAttributeValues: {
-         ":region": "Europe"
-    }
-  };
-  docClient.query(params, function(err, data) {
-  res.render('payseuro', {
-    "payseuro" : data.Items[0]
+router.get("/payseuro", function (req, res) {
+    var params = {
+        TableName: "Countries",
+        ProjectionExpression: "nom",
+        KeyConditionExpression: "#reg = :region",
+        ExpressionAttributeNames: {
+            "#reg": "region",
+        },
+        ExpressionAttributeValues: {
+            ":region": "Europe",
+        },
+    };
+    docClient.query(params, function (err, data) {
+        res.render("payseuro", {
+            "payseuro": data.Items,
+        });
     });
-  });
 });
-*/
 /* Info one country */
 
 router.get("/onecountry", function (req, res) {
