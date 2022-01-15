@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Noms des pays européens</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Noms des pays européens</h1>
+    <ul>
+        <%
+          var list = '';
+          for (i = 0; i < payseuro.length; i++) {
+            list += '<li>'+ payseuro[i].nom +'</li>';
+          }
+        %>
+        <%- list %>
+    </ul>
+  </body>
+</html>

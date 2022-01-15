@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Toutes les infos disponibles sur un pays donné : La France</title>
+  </head>
+  <body>
+    <h1>Toutes les infos disponibles sur un pays donné : La France </h1>
+    <ul>
+      <%
+        var list = '';
+        list +=
+          '<ul>'+
+            '<li>'+ 'Pays: ' + country.nom +'</li><br>'+
+            '<li>'+ 'Région: ' + country.region +'</li><br>'+
+            '<li>'+ 'Capital: ' + country.capitale +'</li><br>'+
+            '<li>'+ 'Langue:' + country.langues.fra +'</li>'
+          '</ul>'
+      %>
+      <%- list %>
+    </ul>
+  </body>
+</html>
