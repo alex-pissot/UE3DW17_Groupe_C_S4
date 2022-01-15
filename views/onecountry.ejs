@@ -5,19 +5,17 @@
   </head>
   <body>
     <h1>Toutes les infos disponibles sur un pays donné : La France </h1>
-    <ul>
       <%
         var list = '';
         list +=
           '<ul>'+
             '<li>'+ 'Pays: ' + country.nom +'</li><br>'+
             '<li>'+ 'Région: ' + country.region +'</li><br>'+
-            '<li>'+ 'Capital: ' + country.capital +'</li><br>'+
+            '<li>'+ 'Capitale: ' + country.capital +'</li><br>'+
             '<li>'+ 'Langue: ' + country.langues.fra +'</li><br>'+
-            '<li>'+ 'Superficies: ' + country.superficie +'</li><br>'
+            '<li>'+ 'Superficie: ' + country.superficie +'</li><br>'
           '</ul>'
       %>
       <%- list %>
-    </ul>
   </body>
 </html>

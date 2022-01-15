@@ -74,5 +74,27 @@ router.get("/startWithM", function (req, res) {
         });
     });
 });
-module.exports = router;
 
+/* Countries with area between 400 000 and 500 000 km2 */
+
+router.get("/area", function (req, res) {
+    var params = {
+        TableName: "Countries",
+        FilterExpression: "#s between :start_number and :end_number",
+        ExpressionAttributeNames: {
+            "#s": "superficie",
+        },
+        ExpressionAttributeValues: {
+            ":start_number":400000,
+            ":end_number":500000,
+        },
+    };
+    docClient.scan(params, function (err, data) {
+        console.log(data.Items);
+        res.render("area", {
+            "country": data.Items,
+        });
+    });
+});
+
+module.exports = router;
