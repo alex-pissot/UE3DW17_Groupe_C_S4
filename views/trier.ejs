@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Noms des pays européens</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Noms et superficie des pays africains triés par superficie de la 10ème à la 22ème position</h1>
+    <ul>
+        <%
+          var list = '';
+          for (i = 0; i < trier.length; i++) {
+            list += '<li>'+ trier[i].nom + trier[i].superficie +</li>';
+          }
+        %>
+        <%- list %>
+    </ul>
+  </body>
+</html>

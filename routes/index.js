@@ -34,6 +34,28 @@ router.get("/payseuro", function (req, res) {
         });
     });
 });
+/* Noms et superficie des pays africains triés par superficie de la 10ème à la 22ème position*/
+router.get("/trier", function (req, res) {
+    var params = {
+        TableName: "Countries",
+        ProjectionExpression: "#rg, nom, superficie",
+        FilterExpression: "#rg = :region and #super > :value",
+        ExpressionAttributeNames: {
+            "#rg": "region",
+            "#super": "superficie",
+        },
+        ExpressionAttributeValues: {
+            ":region": "Africa",
+            ":value": 0,
+        },
+        Limit: 12,
+    };
+    docClient.scan(params, function (err, data) {
+      res.render("trier", {
+          "trier": data.Items,
+      });
+  });
+});
 /* Info one country */
 
 router.get("/onecountry", function (req, res) {
